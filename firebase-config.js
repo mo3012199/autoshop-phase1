@@ -4,5 +4,6 @@ export const firebaseConfig = {
   projectId: "autoshop-pro-65426",
   storageBucket: "autoshop-pro-65426.firebasestorage.app",
   messagingSenderId: "309078800124",
-  appId: "1:309078800124:web:3dbbcfc90efc679cef8979"
+  appId: "1:309078800124:web:3dbbcfc90efc679cef8979",
+  measurementId: "G-34YRTWM8L8"
 };
