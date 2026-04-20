@@ -4,16 +4,21 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AutoShop Pro - Phase 1</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="./styles.css" />
 </head>
+
 <body>
   <div class="bg"></div>
 
+  <!-- AUTH -->
   <section id="auth-screen" class="screen active">
     <div class="auth-wrap">
+
       <div class="brand glass">
         <div class="logo">AP</div>
         <div>
@@ -32,17 +37,42 @@
           <button class="tab" data-auth-tab="signup">حساب جديد</button>
         </div>
 
+        <!-- LOGIN -->
         <form id="login-form" class="form active">
-          <label>البريد الإلكتروني<input type="email" id="login-email" required /></label>
-          <label>كلمة المرور<input type="password" id="login-password" required /></label>
-          <button type="submit" class="btn primary full">تسجيل الدخول</button>
+          <label>
+            البريد الإلكتروني
+            <input type="email" id="login-email" required />
+          </label>
+
+          <label>
+            كلمة المرور
+            <input type="password" id="login-password" required />
+          </label>
+
+          <button type="submit" class="btn primary full">
+            تسجيل الدخول
+          </button>
         </form>
 
+        <!-- SIGNUP -->
         <form id="signup-form" class="form">
-          <label>اسم الورشة<input type="text" id="signup-shop-name" required /></label>
-          <label>البريد الإلكتروني<input type="email" id="signup-email" required /></label>
-          <label>كلمة المرور<input type="password" id="signup-password" minlength="6" required /></label>
-          <label>الدور
+          <label>
+            اسم الورشة
+            <input type="text" id="signup-shop-name" required />
+          </label>
+
+          <label>
+            البريد الإلكتروني
+            <input type="email" id="signup-email" required />
+          </label>
+
+          <label>
+            كلمة المرور
+            <input type="password" id="signup-password" minlength="6" required />
+          </label>
+
+          <label>
+            الدور
             <select id="signup-role">
               <option value="admin">Admin</option>
               <option value="manager">Manager</option>
@@ -50,17 +80,24 @@
               <option value="technician">Technician</option>
             </select>
           </label>
-          <button type="submit" class="btn primary full">إنشاء الحساب</button>
+
+          <button type="submit" class="btn primary full">
+            إنشاء الحساب
+          </button>
         </form>
 
+        <!-- ✅ تم حذف رسالة firebase -->
         <div class="hint">
-          انسخ <code>firebase-config.example.js</code> إلى <code>firebase-config.js</code> وضع بيانات Firebase الحقيقية.
+          Firebase متصل وجاهز للاستخدام.
         </div>
+
       </div>
     </div>
   </section>
 
+  <!-- APP -->
   <section id="app-screen" class="screen">
+
     <aside class="sidebar glass">
       <div class="brand plain">
         <div class="logo">AP</div>
@@ -85,22 +122,38 @@
     </aside>
 
     <main class="main">
+
       <header class="topbar">
         <div>
           <div class="eyebrow">Phase 1</div>
           <h2 id="page-title">لوحة التحكم</h2>
-          <p id="page-subtitle" class="muted">Firebase Authentication + Firestore + Roles + Customers</p>
+          <p id="page-subtitle" class="muted">
+            Firebase Authentication + Firestore + Roles + Customers
+          </p>
         </div>
+
         <div class="actions">
           <button class="btn ghost" id="new-customer-top">+ عميل</button>
         </div>
       </header>
 
+      <!-- DASHBOARD -->
       <section id="page-dashboard" class="page active">
         <div class="stats">
-          <div class="stat glass"><div class="label">Role</div><div class="value" id="stat-role">—</div></div>
-          <div class="stat glass"><div class="label">Customers</div><div class="value mono" id="stat-customers">0</div></div>
-          <div class="stat glass"><div class="label">Active User</div><div class="value smallvalue" id="stat-user">—</div></div>
+          <div class="stat glass">
+            <div class="label">Role</div>
+            <div class="value" id="stat-role">—</div>
+          </div>
+
+          <div class="stat glass">
+            <div class="label">Customers</div>
+            <div class="value mono" id="stat-customers">0</div>
+          </div>
+
+          <div class="stat glass">
+            <div class="label">Active User</div>
+            <div class="value smallvalue" id="stat-user">—</div>
+          </div>
         </div>
 
         <div class="panel glass">
@@ -111,19 +164,24 @@
         </div>
       </section>
 
+      <!-- CUSTOMERS -->
       <section id="page-customers" class="page">
         <div class="section-head">
-          <div class="search"><input id="customer-search" placeholder="ابحث باسم العميل أو الجوال أو البريد"></div>
+          <div class="search">
+            <input id="customer-search" placeholder="ابحث باسم العميل أو الجوال أو البريد">
+          </div>
           <button class="btn primary" id="new-customer-btn">+ Customer</button>
         </div>
         <div id="customers-list" class="cards"></div>
       </section>
 
+      <!-- ROLES -->
       <section id="page-roles" class="page">
         <div class="panel glass">
           <div class="panel-head">
             <h3>الصلاحيات الحالية</h3>
           </div>
+
           <div class="role-grid">
             <div class="role-card"><strong>Admin</strong><span>كل شيء</span></div>
             <div class="role-card"><strong>Manager</strong><span>إدارة + متابعة</span></div>
@@ -133,36 +191,37 @@
         </div>
       </section>
 
+      <!-- SETTINGS -->
       <section id="page-settings" class="page">
         <div class="panel glass">
-          <h3>خطوات التشغيل</h3>
-          <ol class="setup">
-            <li>أنشئ Firebase project.</li>
-            <li>فعّل Email/Password في Authentication.</li>
-            <li>أنشئ Cloud Firestore.</li>
-            <li>انسخ <code>firebase-config.example.js</code> إلى <code>firebase-config.js</code>.</li>
-            <li>ارفع المشروع على GitHub ثم انشره على Vercel.</li>
-          </ol>
+          <h3>النظام جاهز</h3>
+          <p>تم ربط Firebase بنجاح ويمكنك استخدام التطبيق.</p>
         </div>
       </section>
+
     </main>
   </section>
 
+  <!-- MODAL -->
   <dialog id="customer-modal" class="modal">
     <div class="modal-card">
+
       <div class="modal-head">
         <h3 id="customer-modal-title">Customer</h3>
         <button class="icon-btn" data-close="customer-modal">✕</button>
       </div>
+
       <div class="form-grid">
         <label>الاسم<input id="customer-name"></label>
         <label>الجوال<input id="customer-phone"></label>
         <label class="full">البريد<input id="customer-email"></label>
         <label class="full">ملاحظات<textarea id="customer-notes"></textarea></label>
       </div>
+
       <div class="modal-actions">
         <button class="btn primary" id="save-customer-btn">حفظ</button>
       </div>
+
     </div>
   </dialog>
 
@@ -171,5 +230,6 @@
   </template>
 
   <script type="module" src="./app.js"></script>
+
 </body>
 </html>
